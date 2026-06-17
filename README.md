@@ -97,6 +97,78 @@ Direct URL link string to the updated target cone graphic image
 
 * * *
 
+### Example Badges
+
+Since I am located on the eastern US, I watch the Atlantic storms. I have the following in my header:
+```
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.atlantic_storm_1
+        visibility:
+          - condition: state
+            entity: sensor.atlantic_storm_1
+            state_not: unavailable
+        name: Storm
+        tap_action:
+          action: url
+          url_path: https://www.nhc.noaa.gov/graphics_at1.shtml
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.atlantic_storm_2
+        visibility:
+          - condition: state
+            entity: sensor.atlantic_storm_2
+            state_not: unavailable
+        name: Storm
+        tap_action:
+          action: url
+          url_path: https://www.nhc.noaa.gov/graphics_at2.shtml
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.atlantic_storm_3
+        visibility:
+          - condition: state
+            entity: sensor.atlantic_storm_3
+            state_not: unavailable
+        name: Storm
+        tap_action:
+          action: url
+          url_path: https://www.nhc.noaa.gov/graphics_at3.shtml
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.atlantic_storm_4
+        visibility:
+          - condition: state
+            entity: sensor.atlantic_storm_4
+            state_not: unavailable
+        name: Storm
+        tap_action:
+          action: url
+          url_path: https://www.nhc.noaa.gov/graphics_at4.shtml
+      - type: entity
+        show_name: true
+        show_state: true
+        show_icon: true
+        entity: sensor.atlantic_storm_5
+        visibility:
+          - condition: state
+            entity: sensor.atlantic_storm_5
+            state_not: unavailable
+        tap_action:
+          action: url
+          url_path: https://www.nhc.noaa.gov/graphics_at5.shtml
+        name: Storm
+```
+This will show a pill when a storm is active, like right now ;)
+
 ### Tuning Polling Frequencies
 
 By default, the master rest component queries the NOAA server safely every **15 minutes** to prevent triggering firewall security rejections (`403 Forbidden`).
