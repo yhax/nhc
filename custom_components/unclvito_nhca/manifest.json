@@ -1,0 +1,8 @@
+{
+  "domain": "unclvito_nhca",
+  "name": "NOAA NHC Atlantic Hurricane Sensors",
+  "codeowners": ["@unclvito"],
+  "documentation": "https://github.com",
+  "iot_class": "local_polling",
+  "version": "1.0.0"
+}
