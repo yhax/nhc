@@ -14,6 +14,10 @@ A lightweight, high-performance Home Assistant custom integration that automatic
 
 ### Installation
 
+Download and install directly through [HACS (Home Assistant Community Store)](https://hacs.xyz/):
+
+TODO: [![Open your Home Assistant instance and open the NHC Storm Sensors integration inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=unclvito&repository=nhc-storm-sensors&category=integration)
+
 ### Step 1: Install via HACS (Custom Repository)
 
 1.  Open your Home Assistant instance and navigate to **HACS** > **Integrations**.
