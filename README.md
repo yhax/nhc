@@ -96,6 +96,53 @@ Direct URL link string to the official NOAA text review feed
 Direct URL link string to the updated target cone graphic image
 
 * * *
+### Example Widget
+
+This widget will give a list of current storms:
+```
+type: markdown
+title: "🌀 NHC Hurricane Tracking Matrix"
+content: >-
+  {% set storms = [
+    'sensor.atlantic_storm_1', 'sensor.atlantic_storm_2', 'sensor.atlantic_storm_3', 'sensor.atlantic_storm_4', 'sensor.atlantic_storm_5',
+    'sensor.eastern_pacific_storm_1', 'sensor.eastern_pacific_storm_2', 'sensor.eastern_pacific_storm_3', 'sensor.eastern_pacific_storm_4', 'sensor.eastern_pacific_storm_5'
+  ] %}
+
+  {% set active_count = states('sensor.nhc_storm_data') | int(0) %}
+
+  <p><strong>Global Status:</strong> {{ active_count }} Active System{{ 's' if active_count != 1 else '' }} Monitored.</p>
+
+  <table style="width: 100%; border-collapse: collapse; text-align: left;">
+    <thead>
+      <tr style="border-bottom: 2px solid var(--divider-color); font-weight: bold;">
+        <th style="padding: 6px;">Storm Name</th>
+        <th style="padding: 6px;">Class</th>
+        <th style="padding: 6px;">Winds</th>
+        <th style="padding: 6px;">Pressure</th>
+        <th style="padding: 6px;">Trajectory</th>
+      </tr>
+    </thead>
+    <tbody>
+    {%- for entity in storms %}
+      {%- set s_name = state_attr(entity, 'storm_name') %}
+      {%- if states(entity) not in ['Unknown', 'Waiting for data...'] and s_name not in ['None', 'Unknown', none] %}
+        <tr style="border-bottom: 1px solid var(--divider-color);">
+          <td style="padding: 6px; font-weight: bold; color: var(--primary-color);">{{ s_name | title }}</td>
+          <td style="padding: 6px;">{{ state_attr(entity, 'classification') }}</td>
+          <td style="padding: 6px;">{{ state_attr(entity, 'max_winds') }}</td>
+          <td style="padding: 6px;">{{ state_attr(entity, 'pressure') }} inHg</td>
+          <td style="padding: 6px;">{{ state_attr(entity, 'heading_text') }} @ {{ state_attr(entity, 'movement_speed') }}</td>
+        </tr>
+      {%- endif %}
+    {%- endfor %}
+    </tbody>
+  </table>
+
+  {%- if active_count == 0 %}
+  <hr style="border: 0; border-top: 1px solid var(--divider-color); margin: 15px 0;">
+  <p>💚 <strong>All Basins Clear.</strong> No active tropical systems are currently posing threats.</p>
+  {%- endif %}
+```
 
 ### Example Badges
 

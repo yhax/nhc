@@ -98,6 +98,7 @@ async def async_setup_platform(
 
 class NHCMasterFetcherSensor(SensorEntity):
     """The parent REST sensor that calls NOAA, stores activeStorms in attributes, and tracks count."""
+    self._attr_icon = "mdi:database-import"
 
     def __init__(self, name, unique_id):
         """Initialize the data gatherer."""
@@ -131,6 +132,7 @@ class NHCMasterFetcherSensor(SensorEntity):
 
 class NHCChildTemplateSensor(SensorEntity):
     """The downstream child sensors listening for changes on sensor.nhc_storm_data."""
+    self._attr_icon = "mdi:weather-hurricane"
 
     def __init__(self, name, unique_id, state_template, attribute_templates):
         """Initialize child slots."""
