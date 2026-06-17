@@ -3,7 +3,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.typing import ConfigType
 
 _LOGGER = logging.getLogger(__name__)
-DOMAIN = "unclvito_nhca"
+DOMAIN = "nhc"
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up the custom components for NHC Atlantic."""

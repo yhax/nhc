@@ -1,5 +1,5 @@
 {
-  "name": "NOAA NHC Atlantic Hurricane Sensors",
+  "name": "NOAA NHC Hurricane Sensors",
   "type": "integration",
   "render_readme": true
 }
