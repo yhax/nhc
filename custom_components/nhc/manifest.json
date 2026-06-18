@@ -4,6 +4,6 @@
   "codeowners": ["@unclvito"],
   "documentation": "https://github.com/unclvito/nhc",
   "iot_class": "local_polling",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "config_flow": true
 }

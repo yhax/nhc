@@ -1,0 +1,11 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NOAA NHC Storm Sensors",
+        "description": "Click **Submit** to automatically initialize and deploy your NOAA National Hurricane Center tracking sensors."
+      }
+    }
+  }
+}
+
