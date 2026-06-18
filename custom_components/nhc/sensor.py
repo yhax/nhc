@@ -178,7 +178,7 @@ class NHCChildTemplateSensor(SensorEntity):
         try:
             parent_state = self.hass.states.get("sensor.nhc_storm_data")
             if not parent_state or not parent_state.attributes.get("activeStorms"):
-                self._attr_native_value = "Waiting for data..."
+                self._attr_native_value = "unavailable"
                 return
 
             self._attr_native_value = self._state_template.async_render(parse_result=True)
