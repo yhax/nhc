@@ -1,6 +1,6 @@
 {% macro get_state(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {% set winds = (storm['intensity'] if storm else 0|int*1.151)|round(2) %}
@@ -29,7 +29,7 @@
 
 {% macro get_name(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['name'] }}
@@ -38,7 +38,7 @@
 
 {% macro get_classification(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['classification'] }}
@@ -47,7 +47,7 @@
 
 {% macro get_pressure(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ (storm['pressure']|float/33.864)|round(2) }}
@@ -56,7 +56,7 @@
 
 {% macro get_intensity(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['intensity'] }}
@@ -65,7 +65,7 @@
 
 {% macro get_max_winds(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ (storm['intensity']|int*1.151)|round(2) }} MPH
@@ -74,7 +74,7 @@
 
 {% macro get_heading(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['movementDir'] }}
@@ -83,7 +83,7 @@
 
 {% macro get_heading_text(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {% set windbearing = ((storm['movementDir']|float(default=0)+22.5)/45)|int|round %}
@@ -95,7 +95,7 @@
 
 {% macro get_movement_speed(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['movementSpeed'] }}
@@ -104,7 +104,7 @@
 
 {% macro get_distance(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ ((distance (storm['latitudeNumeric'], storm['longitudeNumeric'])))|round(2) }} miles
@@ -113,7 +113,7 @@
 
 {% macro get_latitude(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['latitudeNumeric'] }}
@@ -122,7 +122,7 @@
 
 {% macro get_longitude(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['longitudeNumeric'] }}
@@ -131,7 +131,7 @@
 
 {% macro get_region(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['binNumber'][:2] }}
@@ -140,7 +140,7 @@
 
 {% macro get_forecast_discussion(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['forecastDiscussion'].url }}
@@ -149,7 +149,7 @@
 
 {% macro get_forecast_graphics(binNumber) %}
     {% set storms = state_attr('sensor.nhc_storm_data','activeStorms') %}
-    {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) %}
+   {% set stormsmatching = storms | selectattr('binNumber', 'eq', binNumber) | list %}
     {% if stormsmatching %}
         {% set storm = stormsmatching | first %}
         {{ storm['forecastGraphics'].url }}
